@@ -1,0 +1,819 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&display=swap');
+
+* {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    padding: 0;
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white; /* Barra blanca */
+    padding: 10px 20px;
+    color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    div p {
+        color: #3D2A8A;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+        color: #5f1188;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #5f1188; /* Texto oscuro */
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #5e1188a0; /* Color secundario al pasar el mouse */
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.logo {
+    display: flex;
+    color: #333; /* Texto oscuro */
+    font-size: 18px;
+}
+
+.logo p {
+    margin: auto 10px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #5f1188;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Menú desplegable */
+.menu-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
+    padding-top: 60px; /* Espacio para el botón de cerrar */
+}
+
+.menu-dropdown.show {
+    display: flex;
+}
+
+.menu-dropdown a {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.menu-dropdown a:hover {
+    background-color: #5f1188;
+}
+
+/* Botón de Cerrar */
+.close-menu {
+    display: none;
+    font-size: 20px;
+    color: white;
+    background-color: #8415bfd9;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 80px; /* Mover el botón un poco más abajo */
+    right: 20px; /* Alineamos al lado derecho */
+    z-index: 3;
+}
+
+.menu-dropdown.show .close-menu {
+    display: block; /* Mostrar el botón solo cuando el menú esté visible */
+}
+
+/* Estilos del menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar lista en móviles */
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostrar menú hamburguesa */
+    }
+}
+
+/* Navbar */
+
+/* Contenedor principal */
+.cover {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    padding-top: 70px;
+}
+
+/* Imagen de fondo */
+.cover__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Capa superpuesta */
+.cover__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    /* Capa oscura semitransparente */
+    color: white;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Estilos del texto y botón */
+.cover__title {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.cover__description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .cover {
+        max-width: 100%;
+        /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+
+    .cover__title {
+        font-size: 20px;
+    }
+
+    .cover__description {
+        font-size: 14px;
+    }
+
+    .cover__button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* info footer*/
+
+.info-footer {
+    display: flex;
+    /* Alinea las cajas en fila */
+    justify-content: space-between;
+    /* Espacio uniforme entre las cajas */
+    align-items: center;
+    /* Centra verticalmente el contenido */
+    padding: 2rem;
+    background-color: #5f1188;
+    /* Fondo de la sección */
+    gap: 0rem;
+    /* Espaciado entre las cajas */
+}
+
+.info-footer .box {
+    border-radius: 8px;
+    /* Bordes redondeados */
+    text-align: center;
+    /* Centra el contenido de la caja */
+    padding: 1.5rem;
+    width: 30%;
+    /* Ajusta el tamaño de las cajas */
+}
+
+.info-footer .box-icon {
+    width: 60px;
+    /* Tamaño del ícono */
+    height: auto;
+    /* Mantiene las proporciones */
+    margin-bottom: 1rem;
+    /* Espacio entre el ícono y el texto */
+}
+
+.info-footer .box img {
+    width: 60px;
+}
+
+.info-footer .box:first-child img {
+    width: 65px;
+}
+
+.info-footer .box-title {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+}
+
+@media (max-width: 750px) {
+    .info-footer {
+        flex-direction: column;
+        /* Cambia de filas a columnas */
+        gap: 0rem;
+        /* Más espacio entre las cajas */
+        padding: 0.7rem;
+    }
+
+    .info-footer .box {
+        width: 100%;
+        padding: 0;
+        padding-bottom: 20px;
+        /* Cada caja ocupa todo el ancho */
+    }
+
+    .info-footer .box img {
+        margin: 0 0 0px;
+    }
+
+
+}
+
+/* info footer*/
+
+/* Cards */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    margin-bottom: 25px;
+}
+
+.card-title {
+    color: #3D2A8A;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: #5f1188;
+    text-transform: uppercase;
+}
+
+.card-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    width: 325px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 20px #666;
+    transition: 100ms;
+    transform: translateY(-1%);
+}
+
+.card-title {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+/* Cards */
+/* Carousel */
+
+.slider-main-container {
+    min-height: 90dvh;
+    background: #5f1188;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-container {
+  width: min(100%, 700px);
+  border: 3px solid #fff;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /*Q tan lento o rapido pasa de imagen a imagen*/
+}
+
+.slide {
+  min-width: 100%;
+  aspect-ratio: 16 / 9; /*Relacion de aspecto de las  imagenes*/
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Botones ===== */
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 15px;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 0;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== Dots ===== */
+.dots-container {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+.dot.active {
+  background: #5f1188;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  button {
+    display: none;
+  }
+}
+
+/* Carousel */
+/* Testimonio */
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+
+.testimonio {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    padding-top: 80px;
+    position: relative;
+    background-image: url(images/fondoTestimonios.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    /* margin-top: 40px; */
+}
+
+.capa-black{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+
+.h1{
+    font-size: 30px;
+    position: relative;
+    color: white;
+}
+
+.parrafo1{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;
+    color: #c6c6c6;
+    font-weight: 100;
+}
+
+.container-testimonials{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.testimonial{
+    width: 340px;
+    margin: 20px;
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px 5px black;
+    
+}
+
+.photo-perfil1,
+.photo-perfil2,
+.photo-perfil3{
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    border-radius: 50%;
+    position: relative;
+    top: -60px;
+    box-shadow: 0px 0px 30px -6px black;
+}
+
+.photo-perfil1{
+    background-image: url(images/testimonialNurse.jpeg);
+    background-position: center -10px;
+}
+
+.photo-perfil2{
+    background-image: url(images/testimonialAlcaparras.jpeg);
+    background-size: 160px;
+    background-position: -20px 0px;
+}
+
+.photo-perfil3{
+    background-image: url(images/testimonialETITC.png);
+    background-size: 250px;
+    background-position: -78px -20px;
+}
+
+
+.testimonial h2{
+    margin-top: -40px;
+}
+
+.testimonial h4{
+    margin-top: 10px;
+    color: #333333;
+    font-weight: 400;
+}
+
+.testimonial p{
+    margin-top: 10px;
+    font-weight: 100;
+    color: #7e7e7e;
+}
+
+.container-redes{
+    margin-top: 20px;
+}
+
+.container-redes label{
+    font-size: 40px;
+}
+
+.icon-facebook-with-circle{
+    color: #0148ba;
+}
+
+.icon-google-with-circle{
+    color: #aa1212;
+}
+
+.icon-twitter-with-circle{
+    color: #007bc7;
+}
+
+@media(max-width: 816px) {
+    .testimonial {
+        padding-top: 50px;
+    }
+}
+
+/* Testimonio */
+/* Contacto */
+
+.contacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #5f1188;
+}
+
+form {
+    padding: 50px 55px;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.contacto form h2 {
+    color: #283629;
+    font-size: 35px;
+}
+
+.input-group label {
+    color: #5f1188;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.input-group input,
+textarea {
+    padding: 17px 0px;
+    /* linea modificada, tenia 17 y 25px */
+    padding-left: 17px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    background-color: #EDFFF0;
+    border: 2px solid #F0FAF1;
+    background-color: #ff9cdb0c;
+    outline: none;
+}
+
+.input-group input::placeholder,
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.274);
+}
+
+.form-txt {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.form-txt a {
+    color: #5f1188;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.input-group .btn {
+    font-size: 16px;
+    color: #ffffff;
+    border: 0;
+    border-radius: 25px;
+    background-color: rgba(220, 35, 241, 0.774);
+    box-shadow: 0 0 20px rgba(254, 0, 250, 0.4);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5e1188b6;
+}
+
+@media(max-width:900px) {
+    .contacto {
+        padding: 30px;
+    }
+
+    form {
+        padding: 50px 30px;
+        width: 100%;
+    }
+
+    input {
+        padding: 15px;
+    }
+}
+
+/* Contacto */
+
+/* Info footer */
+
+.footer__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.384));
+}
+
+.footer__info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__info img {
+    width: 150px;
+    border-radius: 20px;
+}
+
+.footer__info p {
+    color: #ffffff;
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.footer__info h3 {
+    color: #5f1188;
+    font-size: 25px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.footer__info p a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.footer__info .instagram-logo {
+    padding-top: 10px;
+    width: 45px;
+}
+
+@media(max-width:850px) {
+    .footer__container {
+        flex-direction: column;
+    }
+
+    .footer__info {
+        align-self: center;
+        padding-bottom: 30px;
+        width: 80%;
+    }
+
+    .contacto {
+        width: 90%;
+        align-self: center;
+    }
+}
+
+/* Info footer */
+
+/* Boton whatsapp */
+
+.whatsapp-container {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-float {
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.whatsapp-float img {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background-color: #25d366;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap;
+}
+
+.whatsapp-container:hover .whatsapp-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Boton whatsapp */
